@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const LeftSideBar = () => {
-    const [categories, setCategories] = useState('');
+    const [categories, setCategories] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/course-categories')
             .then(res => res.json())
@@ -11,9 +11,9 @@ const LeftSideBar = () => {
     }, [])
     return (
         <div className='border'>
-            <h1>Categories</h1>
+            <h1 className='text-xl font-semibold' >Categories</h1>
             {
-                categories.map(category => <p>{category.name}</p>)
+                categories.map(category => <p key={category.id} className='my-2' >{category.name}</p>)
             }
         </div>
     );

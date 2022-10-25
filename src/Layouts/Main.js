@@ -9,10 +9,12 @@ const Main = () => {
         <div>
             <Navbar></Navbar>
             <div className='grid grid-cols-4'>
-                <LeftSideBar></LeftSideBar>
-            </div>
-            <div className='grid grid-cols-8'>
-                <Outlet></Outlet>
+                <div>
+                    <LeftSideBar></LeftSideBar>
+                </div>
+                <div>
+                    <Outlet></Outlet>
+                </div>
             </div>
             <Footer></Footer>
         </div>
