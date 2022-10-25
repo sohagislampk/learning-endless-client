@@ -1,9 +1,10 @@
 import './App.css';
+import Main from './Layouts/Main';
 
 function App() {
   return (
     <div className="App">
-      <h1>Learning Endless Comming Soon</h1>
+      <Main></Main>
     </div>
   );
 }
