@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -49,13 +50,18 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src="https://placeimg.com/80/80/people" />
+                                        {
+                                            user?.photoURL ?
+                                                <img src={user.photoURL} alt=""></img>
+                                                :
+                                                <FaUserAlt className='w-10 text-3xl'></FaUserAlt>
+                                        }
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                                    <li><a>{user.email}</a></li>
-                                    <li> <a>Profile</a></li>
-                                    <li onClick={handleLogout}><a>Logout</a></li>
+                                    <li><Link to={'/profile'}>{user.displayName}</Link></li>
+                                    <li> <Link to={'/profile'} >Profile</Link></li>
+                                    <li onClick={handleLogout}><p>Logout</p></li>
                                 </ul>
                             </div>
                         </>
