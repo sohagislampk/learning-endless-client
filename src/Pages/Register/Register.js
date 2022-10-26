@@ -1,34 +1,59 @@
 import React from 'react';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState('')
+    const { createUser } = useContext(AuthContext);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                setError('');
+                form.reset();
+                console.log(user);
+            })
+            .catch(error => {
+                setError(error.message);
+            });
+    }
     return (
-        <div className='w-5/12 mx-auto'>
+        <form onSubmit={handleSubmit} className='w-5/12 mx-auto'>
             <div className="form-control">
                 <label className="label">
                     <span className="label-text">Full Name</span>
                 </label>
-                <input type="text" placeholder="full name" className="input input-bordered" />
+                <input type="text" name="name" placeholder="full name" className="input input-bordered" />
             </div>
             <div className="form-control">
                 <label className="label">
                     <span className="label-text">Email</span>
                 </label>
-                <input type="text" placeholder="email" className="input input-bordered" />
+                <input type="email" name="email" placeholder="email" className="input input-bordered" />
             </div>
             <div className="form-control">
                 <label className="label">
                     <span className="label-text">Password</span>
                 </label>
-                <input type="text" placeholder="password" className="input input-bordered" />
+                <input type="password" name="password" placeholder="password" className="input input-bordered" />
                 <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">Already Have a Account? Login</a>
+                    <span className="label-text-alt" >Already Have a Account? <Link to={'/login'} className="label-text-alt link link-hover text-primary">Login</Link></span>
                 </label>
             </div>
             <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button type="submit" className="btn btn-primary">Register</button>
             </div>
 
-        </div>
+        </form>
     );
 };
 
