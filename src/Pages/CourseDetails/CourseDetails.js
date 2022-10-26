@@ -7,7 +7,7 @@ const CourseDetails = () => {
     return (
         <div>
             <img src={photo_url} alt="" />
-            <h1>{title}</h1>
+            <h1 className='text-2xl font-semibold'>{title}</h1>
             <h3>Description : {description}</h3>
         </div>
     );

@@ -25,7 +25,7 @@ const Navbar = () => {
                             <li><a>Item 3</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <Link to={'/'} className="btn btn-ghost normal-case text-xl"><img className='h-8 mr-2' src="learning-endless.png" alt="" />Learning Endless</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -44,7 +44,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <Link to={'/login'} className="btn">Login</Link>
+                    <Link to={'/register'} className="btn">Register</Link>
                 </div>
             </div>
         </div>

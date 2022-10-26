@@ -14,17 +14,17 @@ export const routes = createBrowserRouter([{
         {
             path: '/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/courses')
+            loader: () => fetch('https://learning-endless-server-a10.vercel.app/courses')
         },
         {
             path: '/category/:id',
             element: <Categories></Categories>,
-            loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            loader: ({ params }) => fetch(`https://learning-endless-server-a10.vercel.app/category/${params.id}`)
         },
         {
             path: '/courses/:id',
             element: <CourseDetails></CourseDetails>,
-            loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+            loader: ({ params }) => fetch(`https://learning-endless-server-a10.vercel.app/courses/${params.id}`)
         },
         {
             path: '/login',

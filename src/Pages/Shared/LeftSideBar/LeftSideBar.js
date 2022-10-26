@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const LeftSideBar = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/course-categories')
+        fetch('https://learning-endless-server-a10.vercel.app/course-categories')
             .then(res => res.json())
             .then(data => setCategories(data));
     }, [])
