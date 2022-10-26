@@ -2,13 +2,17 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import { FcGoogle } from 'react-icons/fc'
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaGoogle } from 'react-icons/fa'
+
+
 const Login = () => {
-    const { signIn, loginProvider } = useContext(AuthContext);
+    const { signIn, loginProvider, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -17,25 +21,27 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setError('');
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch(error => {
-                setError(error.message)
-            });
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
     const googleLogin = () => {
-        const provider = new GoogleAuthProvider();
-        loginProvider(provider)
+        loginProvider()
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setError('');
             })
             .catch(error => {
                 setError(error.message);
-            });
+            })
+
 
     }
     return (
@@ -63,8 +69,8 @@ const Login = () => {
             </form>
             <p className='mt-4'>Or Login With</p>
             <div className='flex justify-center'>
-                <div onClick={googleLogin} className='text-5xl m-2'><FcGoogle></FcGoogle></div>
-                <div className='text-5xl m-2'><FaGithub></FaGithub></div>
+                <div onClick={googleLogin} className='text-4xl m-2'><FaGoogle></FaGoogle></div>
+                <div className='text-4xl m-2'><FaGithub></FaGithub></div>
             </div>
         </div>
     );
