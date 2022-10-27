@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
+import { MdLightMode, MdNightlight } from 'react-icons/md'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -45,6 +46,12 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='navbar-end'>
+                    <label className="swap swap-rotate">
+                        <input type="checkbox" />
+                        <MdLightMode className='swap-off  w-8 h-8'></MdLightMode>
+                        <MdNightlight className="swap-on  w-8 h-8" ></MdNightlight>
+
+                    </label>
                     {user?.uid ?
                         <>
                             <div className="dropdown dropdown-end">
