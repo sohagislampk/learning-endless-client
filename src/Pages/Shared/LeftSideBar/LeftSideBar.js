@@ -11,11 +11,13 @@ const LeftSideBar = () => {
             .then(data => setCategories(data));
     }, [])
     return (
-        <div className='border'>
-            <h1 className='text-xl font-semibold' >Categories</h1>
-            {
-                categories.map(category => <p key={category.id} className='my-2' ><Link to={`/category/${category.id}`}>{category.name}</Link></p>)
-            }
+        <div className='text-center'>
+            <h1 className='text-xl font-semibold mb-4' >Categories</h1>
+            <div className='btn-group btn-group-vertical gap-2'>
+                {
+                    categories.map(category => <button key={category.id} className='btn w-full' ><Link to={`/category/${category.id}`}>{category.name}</Link></button>)
+                }
+            </div>
         </div>
     );
 };
