@@ -1,12 +1,14 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../Layouts/Main';
+import Blog from '../../Pages/Blog/Blog';
 import Categories from '../../Pages/Categories/Categories';
 import CourseDetails from '../../Pages/CourseDetails/CourseDetails';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
 import Profile from '../../Pages/Profile/Profile';
 import Register from '../../Pages/Register/Register';
+import CheckOut from '../../Pages/Shared/CheckOut/CheckOut';
 import PrivateRouter from '../PrivateRouter/PrivateRouter';
 
 export const routes = createBrowserRouter([{
@@ -25,7 +27,12 @@ export const routes = createBrowserRouter([{
         },
         {
             path: '/courses/:id',
-            element: <PrivateRouter><CourseDetails></CourseDetails></PrivateRouter>,
+            element: <CourseDetails></CourseDetails>,
+            loader: ({ params }) => fetch(`https://learning-endless-server-a10.vercel.app/courses/${params.id}`)
+        },
+        {
+            path: '/checkout/:id',
+            element: <PrivateRouter><CheckOut></CheckOut></PrivateRouter>,
             loader: ({ params }) => fetch(`https://learning-endless-server-a10.vercel.app/courses/${params.id}`)
         },
         {
@@ -39,6 +46,10 @@ export const routes = createBrowserRouter([{
         {
             path: '/profile',
             element: <PrivateRouter><Profile></Profile></PrivateRouter>
+        },
+        {
+            path: '/blog',
+            element: <Blog></Blog>
         }
     ]
 }])

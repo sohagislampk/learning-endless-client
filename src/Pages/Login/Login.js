@@ -47,6 +47,7 @@ const Login = () => {
     return (
         <div>
             <form onSubmit={handleLogin} className='w-5/12 mx-auto'>
+                <p className='text-red-600'>{error}</p>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>

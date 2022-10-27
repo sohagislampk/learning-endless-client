@@ -55,10 +55,11 @@ const Register = () => {
         <div>
             <form onSubmit={handleSubmit} className='w-5/12 mx-auto'>
                 <div className="form-control">
+                    <p className='text-red-600'>{error}</p>
                     <label className="label">
                         <span className="label-text">Full Name</span>
                     </label>
-                    <input type="text" name="name" placeholder="full name" className="input input-bordered" />
+                    <input type="text" name="name" placeholder="full name" required className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -70,13 +71,13 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                    <input type="email" name="email" placeholder="email" required className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                    <input type="password" name="password" placeholder="password" required className="input input-bordered" />
                     <label className="label">
                         <span className="label-text-alt" >Already Have a Account? <Link to={'/login'} className="label-text-alt link link-hover text-primary">Login</Link></span>
                     </label>
