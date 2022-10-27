@@ -5,6 +5,7 @@ import Blog from '../../Pages/Blog/Blog';
 import Categories from '../../Pages/Categories/Categories';
 import CourseDetails from '../../Pages/CourseDetails/CourseDetails';
 import Error404 from '../../Pages/Error404/Error404';
+import Faq from '../../Pages/FAQ/Faq';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
 import Profile from '../../Pages/Profile/Profile';
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
             }
         ]
 
