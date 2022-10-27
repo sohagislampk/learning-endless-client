@@ -64,7 +64,8 @@ const Login = () => {
     }
     return (
         <div>
-            <form onSubmit={handleLogin} className='w-5/12 mx-auto'>
+            <form onSubmit={handleLogin} className='lg:w-5/12 mx-auto'>
+                <h1 className='text-2xl font-semibold text-center my-4'>Login Here</h1>
                 <p className='text-red-600'>{error}</p>
                 <div className="form-control">
                     <label className="label">
@@ -86,7 +87,7 @@ const Login = () => {
                 </div>
 
             </form>
-            <p className='mt-4'>Or Login With</p>
+            <p className='mt-4 text-center'>Or Login With</p>
             <div className='flex justify-center'>
                 <div onClick={googleLogin} className='text-4xl m-2'><FaGoogle></FaGoogle></div>
                 <div onClick={gitLogin} className='text-4xl m-2'><FaGithub></FaGithub></div>

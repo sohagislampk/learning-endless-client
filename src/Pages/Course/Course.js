@@ -8,13 +8,13 @@ const Course = ({ course }) => {
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-2xl border h-[500px]">
-                <figure><img className='relative' src={photo_url} alt="Shoes" /></figure>
-                <div className='w-16 h-16 rounded-full bg-blue-500 flex justify-center items-center absolute top-40 left-56 text-white font-bold text-xl'><p>${price}</p></div>
+                <figure><img src={photo_url} alt="Shoes" /></figure>
+                <div className=' bg-blue-500 flex justify-center items-center text-white font-bold text-xl'><p>${price}</p></div>
                 <div className="card-body">
                     <h2 className="card-title mt-1">{title}</h2>
                     <div className='flex justify-between text-red-400 font-semibold my-0'> <small>Level: {level}</small>
                         <small>Duration: {duration}</small></div>
-                    <p>{about}</p>
+                    <p>{about.slice(0, 70)}..</p>
                     <div className='flex justify-between text-lg font-semibold'>
                         <div className='flex items-center'>
                             <AiFillStar className='text-red-400 mr-1 mt-1'></AiFillStar>

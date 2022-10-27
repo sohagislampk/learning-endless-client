@@ -8,8 +8,9 @@ const CheckOut = () => {
     const checkout = useLoaderData();
     return (
         <div>
-            <h1 className='text-xl font-semibold' >Course : {checkout.title}</h1>
-            <form className='w-5/12 mx-auto'>
+            <h1 className='text-xl lg:font-semibold my-4 text-center' >Course : {checkout.title}</h1>
+            <p className='text-xl text-center font-semibold'>Price : ${checkout.price}</p>
+            <form className='lg:w-5/12 mx-auto'>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Full Name</span>

@@ -11,11 +11,11 @@ const CourseDetails = () => {
     const ref = React.createRef();
     return (
         <div>
-            <div ref={ref} className='text-center'>
+            <div ref={ref} className='text-center my-4'>
                 <img src={photo_url} alt="" />
                 <h1 className='text-3xl font-semibold mt-6'>Course : {title}</h1>
-                <div className='flex justify-between items-center my-4'>
-                    <div className='flex items-center my-4'>
+                <div className='lg:flex justify-between items-center my-4'>
+                    <div className='lg:flex items-center my-4'>
                         <div className="avatar">
                             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mr-2">
                                 <img src={instructor_photo} alt="" />
@@ -27,8 +27,8 @@ const CourseDetails = () => {
                     <p className='text-2xl font-semibold' >Duration: {duration}</p>
 
                 </div>
-                <h3>Description : {description}</h3>
-                <p className='text-xl my-6'>Skills : <strong>{skills}</strong></p>
+                <h3 className='w-full'>Description : {description}</h3>
+                <p className='lg:text-xl my-6'>Skills : <strong>{skills}</strong></p>
                 <div className='flex justify-between text-lg font-semibold my-4'>
                     <div className='flex items-center'>
                         <AiFillStar className='text-red-400 mr-1 mt-1'></AiFillStar>

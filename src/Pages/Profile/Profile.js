@@ -8,7 +8,6 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
     const [name, setName] = useState(user?.displayName);
     const photoURL = useRef(user?.photoURL);
-    console.log(user);
     const handleSubmit = event => {
         event.preventDefault();
     }
@@ -18,7 +17,8 @@ const Profile = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className='w-5/12 mx-auto'>
+            <form onSubmit={handleSubmit} className='lg:w-5/12 mx-auto'>
+                <h1 className='text-xl font-semibold text-center my-4'>Your Profile</h1>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Full Name</span>

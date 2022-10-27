@@ -70,7 +70,8 @@ const Register = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className='w-5/12 mx-auto'>
+            <form onSubmit={handleSubmit} className='lg:w-5/12 mx-auto'>
+                <h1 className='text-2xl font-semibold text-center my-4'>Register Here</h1>
                 <div className="form-control">
                     <p className='text-red-600'>{error}</p>
                     <label className="label">
@@ -104,7 +105,7 @@ const Register = () => {
                 </div>
 
             </form>
-            <p className='mt-4'>Or Login With</p>
+            <p className='mt-4 text-center'>Or Login With</p>
             <div className='flex justify-center'>
                 <div onClick={googleLogin} className='text-4xl m-2'><FaGoogle></FaGoogle></div>
                 <div onClick={gitLogin} className='text-4xl m-2'><FaGithub></FaGithub></div>
