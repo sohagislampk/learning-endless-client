@@ -7,7 +7,7 @@ const Course = ({ course }) => {
     const { title, photo_url, _id, about, price, rating, review, like, level, duration } = course;
     return (
         <div>
-            <div className="card card-compact bg-base-100 shadow-2xl border h-[500px]">
+            <div className="card card-compact bg-base-100 shadow-2xl border h-[520px]">
                 <figure><img src={photo_url} alt="Shoes" /></figure>
                 <div className=' bg-blue-500 flex justify-center items-center text-white font-bold text-xl'><p>${price}</p></div>
                 <div className="card-body">
