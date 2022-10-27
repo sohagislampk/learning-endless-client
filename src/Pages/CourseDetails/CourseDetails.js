@@ -10,10 +10,17 @@ const CourseDetails = () => {
     const { title, photo_url, description, _id, instructor, instructor_photo, skills, rating, review, like, students, duration, level } = courseDetails;
     const ref = React.createRef();
     return (
-        <div>
-            <div ref={ref} className='text-center my-4'>
+        <div ref={ref}>
+            <div className='text-center my-4'>
+                <div className='lg:flex items-center justify-between mb-6'>
+                    <h1 className='text-3xl font-semibold mt-6'>Course : {title}</h1>
+                    <ReactToPdf targetRef={ref} filename={title}>
+                        {({ toPdf }) => (
+                            <div className='flex justify-center mt-4 lg:justify-end'><GrDocumentPdf onClick={toPdf} className="text-5xl"></GrDocumentPdf></div>
+                        )}
+                    </ReactToPdf>
+                </div>
                 <img src={photo_url} alt="" />
-                <h1 className='text-3xl font-semibold mt-6'>Course : {title}</h1>
                 <div className='lg:flex justify-between items-center my-4'>
                     <div className='lg:flex items-center my-4'>
                         <div className="avatar">
@@ -51,13 +58,6 @@ const CourseDetails = () => {
                 </div>
 
                 <Link to={`/checkout/${_id}`}><button className='btn btn-primary my-4'>Get Premium Access</button></Link>
-                <ReactToPdf targetRef={ref} filename={title}>
-                    {({ toPdf }) => (
-                        <div className='flex justify-center'>
-                            <GrDocumentPdf onClick={toPdf} className="text-5xl"></GrDocumentPdf>
-                        </div>
-                    )}
-                </ReactToPdf>
             </div>
         </div>
     );
