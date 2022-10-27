@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -13,11 +13,15 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+    const provider = new GoogleAuthProvider();
+    const gitProvider = new GithubAuthProvider();
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -33,10 +37,24 @@ const Login = () => {
             })
     }
     const googleLogin = () => {
-        loginProvider()
+        loginProvider(provider)
             .then(result => {
                 const user = result.user;
                 setError('');
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+
+
+    }
+    const gitLogin = () => {
+        loginProvider(gitProvider)
+            .then(result => {
+                const user = result.user;
+                setError('');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error.message);
@@ -71,7 +89,7 @@ const Login = () => {
             <p className='mt-4'>Or Login With</p>
             <div className='flex justify-center'>
                 <div onClick={googleLogin} className='text-4xl m-2'><FaGoogle></FaGoogle></div>
-                <div className='text-4xl m-2'><FaGithub></FaGithub></div>
+                <div onClick={gitLogin} className='text-4xl m-2'><FaGithub></FaGithub></div>
             </div>
         </div>
     );

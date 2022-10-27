@@ -4,11 +4,15 @@ import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa'
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState('')
     const { createUser, loginProvider, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const provider = new GoogleAuthProvider();
+    const gitProvider = new GithubAuthProvider();
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -32,15 +36,28 @@ const Register = () => {
 
     }
     const googleLogin = () => {
-        loginProvider()
+        loginProvider(provider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setError('');
+                navigate('/')
             })
             .catch(error => {
                 setError(error.message);
             });
+    }
+    const gitLogin = () => {
+        loginProvider(gitProvider)
+            .then(result => {
+                const user = result.user;
+                setError('');
+                navigate('/');
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+
+
     }
     const updateUserProfile = (name, photoURL) => {
         const profile = {
@@ -90,7 +107,7 @@ const Register = () => {
             <p className='mt-4'>Or Login With</p>
             <div className='flex justify-center'>
                 <div onClick={googleLogin} className='text-4xl m-2'><FaGoogle></FaGoogle></div>
-                <div className='text-4xl m-2'><FaGithub></FaGithub></div>
+                <div onClick={gitLogin} className='text-4xl m-2'><FaGithub></FaGithub></div>
             </div>
         </div>
     );
