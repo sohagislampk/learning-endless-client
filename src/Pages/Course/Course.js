@@ -29,7 +29,7 @@ const Course = ({ course }) => {
                             <AiFillLike className='text-red-400 mr-1 mt-1'></AiFillLike>
                             <p>{like}</p>
                         </div>
-
+                        {/* Link */}
                     </div>
                     <div className="card-actions justify-center">
                         <Link to={`/courses/${_id}`}><button className="btn btn-primary">See Details</button></Link>
